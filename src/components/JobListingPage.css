@@ -1,0 +1,48 @@
+.job-listings-container {
+    background-color: white;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background : #23446e
+}
+
+.page-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 25px;
+}
+
+.job-list {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.job-card {
+    background-color: white;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.job-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.apply-button {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.apply-button:hover {
+    background-color: orangered
+}

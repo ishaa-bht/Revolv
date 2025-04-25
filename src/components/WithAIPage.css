@@ -1,0 +1,169 @@
+/* General Styling */
+.ai-implementation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+.welcome-message {
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.welcome-message h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.welcome-message h2 {
+    font-size: 1.8rem;
+    color: #34495e;
+}
+
+/* Implementation Options Section */
+.implementation-options {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.implementation-options h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20\px;
+}
+
+/* Tool Card Styling */
+.option-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 500px; /* Decreased max-width */
+    padding: 15px; /* Decreased padding */
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.option-card.selected {
+    background-color: #e0f7fa;
+    border-color: #007bff;
+}
+
+.tool-info {
+    text-align: left;
+    padding-right: 15px; /* Adjusted padding */
+}
+
+.tool-info h4 {
+    font-size: 1.2rem; /* Decreased font size */
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px; /* Adjusted margin */
+}
+
+.tool-info p {
+    font-size: 0.9rem; /* Decreased font size */
+    color: #666;
+}
+
+/* Generate QR Button */
+.generate-qr-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Adjusted padding */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 0.9rem; /* Decreased font size */
+    font-weight: 500;
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.generate-qr-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Back Button Styling */
+.action-buttons {
+    margin-top: 40px;
+}
+
+.back-button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .welcome-message h1 {
+        font-size: 2rem;
+    }
+
+    .welcome-message h2 {
+        font-size: 1.5rem;
+    }
+
+    .implementation-options {
+        padding: 20px 15px;
+    }
+
+    .option-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px; /* Adjusted gap */
+        padding: 15px; /* Adjusted padding */
+    }
+
+    .tool-info {
+        padding-right: 0;
+    }
+
+    .generate-qr-button {
+        width: 100%;
+    }
+}
