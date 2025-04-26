@@ -434,7 +434,103 @@
 
 // export default App;
 
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+// import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+// import './App.css';
+// import Header from './components/Header';
+// import Features from './components/Features';
+// import Testimonials from './components/Testimonials';
+// import Footer from './components/Footer';
+// import AuthModal from './components/AuthModal';
+// import UserInfoForm from './components/UserInfoForm';
+// import QueriesPage from './components/QueriesPage';
+// import SeekerPage from './components/SeekerPage';
+// import ResultDisplay from './components/ResultDisplay';
+// import JobProposal from './components/JobProposal';
+// import PostJobDashboard from './components/PostJobDashboard';
+// import QRGenerationPage from './components/QRGenerationPage';
+// import WebsiteLinkQRPage from './components/WebsiteLinkQRPage';
+// import WithAIPage from './components/WithAIPage';
+// import JobListingPage from './components/JobListingPage';
+
+// const App = () => {
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [isSignedUp, setIsSignedUp] = useState(false);
+//   const [userType, setUserType] = useState('business');
+
+//   const handleGetStarted = () => {
+//     setIsModalOpen(true);
+//   };
+
+//   const closeModal = () => {
+//     setIsModalOpen(false);
+//   };
+
+//   return (
+//     <Router>
+//       <div className="App">
+//         <Routes>
+//           <Route
+//             path="/"
+//             element={
+//               <>
+//                 <Header onGetStarted={handleGetStarted} />
+//                 <Features />
+//                 <Testimonials />
+//                 <Footer />
+//                 {isModalOpen && (
+//                   <AuthModal
+//                     closeModal={closeModal}
+//                     setIsSignedUp={setIsSignedUp}
+//                     setUserType={setUserType}
+//                   />
+//                 )}
+//               </>
+//             }
+//           />
+//           <Route
+//             path="/userinfo"
+//             element={isSignedUp ? <UserInfoForm /> : <Navigate to="/" />}
+//           />
+//           <Route
+//             path="/queries"
+//             element={isSignedUp && userType === 'business' ? <QueriesPage /> : <Navigate to="/" />}
+//           />
+//           <Route
+//             path="/seeker"
+//             element={isSignedUp && userType === 'seeker' ? <SeekerPage /> : <Navigate to="/" />}
+//           />
+//           <Route
+//             path="/results"
+//             element={isSignedUp && userType === 'business' ? <ResultDisplay /> : <Navigate to="/" />}
+//           />
+//           <Route
+//             path="/job-listings"
+//             element={isSignedUp && userType === 'seeker' ? <JobListingPage /> : <Navigate to="/" />}
+//           />
+//            <Route path="/job-proposal" element={<JobProposal />} />
+//            <Route path="/post-job-dashboard" element={<PostJobDashboard />} />
+//            <Route
+//             path="/qr-generation"
+//             element={isSignedUp && userType === 'business' ? <QRGenerationPage /> : <Navigate to="/" />}
+//           />
+//           <Route
+//             path="/website-link-qr"
+//             element={isSignedUp && userType === 'business' ? <WebsiteLinkQRPage /> : <Navigate to="/" />}
+//           />
+//           <Route
+//             path="/with-ai"
+//             element={isSignedUp && userType === 'business' ? <WithAIPage /> : <Navigate to="/" />}
+//           />
+//         </Routes>
+//       </div>
+//     </Router>
+//   );
+// };
+
+// export default App;
+
+import React, { useState, useEffect } from 'react'; // <-- add useEffect here
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
@@ -457,6 +553,7 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSignedUp, setIsSignedUp] = useState(false);
   const [userType, setUserType] = useState('business');
+  const [apiData, setApiData] = useState(null); // <-- to store API response
 
   const handleGetStarted = () => {
     setIsModalOpen(true);
@@ -465,6 +562,19 @@ const App = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  // 🔥 Fetch data from Flask backend when app loads
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}/predict`) // <-- example endpoint
+      .then(response => response.json())
+      .then(data => {
+        console.log('API Data:', data);
+        setApiData(data); // Save response to state if needed
+      })
+      .catch(error => {
+        console.error('Error fetching API:', error);
+      });
+  }, []);
 
   return (
     <Router>
@@ -508,9 +618,9 @@ const App = () => {
             path="/job-listings"
             element={isSignedUp && userType === 'seeker' ? <JobListingPage /> : <Navigate to="/" />}
           />
-           <Route path="/job-proposal" element={<JobProposal />} />
-           <Route path="/post-job-dashboard" element={<PostJobDashboard />} />
-           <Route
+          <Route path="/job-proposal" element={<JobProposal />} />
+          <Route path="/post-job-dashboard" element={<PostJobDashboard />} />
+          <Route
             path="/qr-generation"
             element={isSignedUp && userType === 'business' ? <QRGenerationPage /> : <Navigate to="/" />}
           />
