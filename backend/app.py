@@ -77,7 +77,8 @@ from flask_cors import CORS
 import joblib
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "revolv-an8rrifsj-ishas-projects-307cdf87.vercel.app"}})
+
 
 # Lazy loading
 model = None
