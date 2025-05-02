@@ -77,7 +77,7 @@ from flask_cors import CORS
 import joblib
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "revolv-an8rrifsj-ishas-projects-307cdf87.vercel.app"}})
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://revolv-ad926ifq1-ishas-projects-307cdf87.vercel.app"]}})
 
 
 # Lazy loading
